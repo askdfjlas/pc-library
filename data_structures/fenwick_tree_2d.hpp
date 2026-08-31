@@ -1,16 +1,13 @@
-#include <bits/stdc++.h>
-using namespace std;
+#ifndef FENWICK_TREE_2D_HPP
+#define FENWICK_TREE_2D_HPP
 
-#define FOR(x,n) for(int x=0;x<n;x++)
-#define FORR(x,a,b) for(int x=a;x<=b;x++)
-using ll = long long;
-using ii = pair<int,int>;
+#include "starter.hpp"
 
 template <typename T> struct FenwickTree2D {
   int height, width;
   vector<vector<T>> tree;
   FenwickTree2D() = default;
-  FenwickTree2D(int height, int width) : height(height), width(width) {
+  FenwickTree2D(int height_, int width_) : height(height_), width(width_) {
     tree.resize(height + 1);
     FOR(i,height+1) tree[i].resize(width + 1);
   }
@@ -34,4 +31,4 @@ template <typename T> struct FenwickTree2D {
   void set(int i, int j, T x) { update(i, j, x - range_sum(i, j, i, j)); }
 };
 
-// https://leetcode.com/problems/range-sum-query-2d-immutable/
+#endif

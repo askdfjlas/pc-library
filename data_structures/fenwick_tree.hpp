@@ -1,10 +1,12 @@
-#include <bits/stdc++.h>
-using namespace std;
+#ifndef FENWICK_TREE_HPP
+#define FENWICK_TREE_HPP
+
+#include "starter.hpp"
 
 template <typename T> struct FenwickTree {
   int size = 1, high_bit = 1;
   vector<T> tree;
-  FenwickTree(int _size) : size(_size) {
+  FenwickTree(int size_) : size(size_) {
     tree.resize(size + 1);
     while((high_bit << 1) <= size) high_bit <<= 1;
   }
@@ -30,18 +32,4 @@ template <typename T> struct FenwickTree {
   void set(int i, T x) { update(i, x - range_sum(i, i)); }
 };
 
-int main() {
-  // Testing
-  vector<int> test = {-23, 88, 15, 99, 100, 1000, 2323, 3, 0, 895};
-  FenwickTree<int> tree = FenwickTree<int>(test);
-  
-  assert(tree.lower_bound(-23) == 0);
-  assert(tree.lower_bound(88) == 3);
-  
-  // Too lazy rn to turn these into asserts :^)
-  cout << tree.prefix_sum(0) << ' ' << tree.prefix_sum(5) << ' ' << tree.prefix_sum(8) << '\n';
-  tree.update(0, 100);
-  cout << tree.prefix_sum(5) << ' ' << tree.prefix_sum(8) << '\n';
-  tree.update(8, -5235);
-  cout << tree.prefix_sum(5) << ' ' << tree.prefix_sum(8) << '\n';
-}
+#endif

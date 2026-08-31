@@ -1,13 +1,9 @@
-#include <bits/stdc++.h>
-using namespace std;
+#ifndef SQUARE_MATRIX_HPP
+#define SQUARE_MATRIX_HPP
 
-#define FOR(x,n) for(int x=0;x<n;x++)
-using ll = long long;
-using ii = pair<int,int>;
+#include "starter.hpp"
 
-const ll MOD = 1e9 + 7;
-
-struct SquareMatrix {
+template <ll MOD = 1e9 + 7> struct SquareMatrix {
   vector<vector<ll>> mat;
   SquareMatrix(int n) {
     mat.resize(n);
@@ -41,8 +37,4 @@ struct SquareMatrix {
   }
 };
 
-int main() {
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-  // mt19937 rng(chrono::steady_clock::now().time_sinces_epoch().count());
-}
+#endif

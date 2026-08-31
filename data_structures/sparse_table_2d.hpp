@@ -1,10 +1,7 @@
-#include <bits/stdc++.h>
-using namespace std;
+#ifndef SPARSE_TABLE_2D_HPP
+#define SPARSE_TABLE_2D_HPP
 
-#define FOR(x,n) for(int x=0;x<n;x++)
-#define PI 3.14159265358979323846264338327950288
-typedef long long ll;
-typedef pair<int,int> ii;
+#include "starter.hpp"
 
 template <class T, class Compare = less<T>>
 struct SparseTable2d {
@@ -46,17 +43,4 @@ struct SparseTable2d {
   }
 };
 
-int main() {
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-  // mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-  
-  vector<vector<int>> test =  {
-    {1, 2, 3, 4}, {2, 3, 4, 5}, {9, 9, 9, 9}, {-1, -1, -1, -1}
-  };
-  
-  SparseTable2d<int> st(test);
-  SparseTable2d<int,greater<int>> st2(test);
-  cout << st.query(0, 3, 0, 3) << ' ' << st.query(2, 2, 2, 2) << '\n';
-  cout << st2.query(0, 3, 0, 3) << ' ' << st2.query(3, 3, 3, 3) << '\n';
-}
+#endif

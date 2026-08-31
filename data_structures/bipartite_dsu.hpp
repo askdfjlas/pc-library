@@ -1,3 +1,8 @@
+#ifndef BIPARTITE_DSU_HPP
+#define BIPARTITE_DSU_HPP
+
+#include "starter.hpp"
+
 struct BipartiteDsu {
   vector<int> par, col, sz;
   BipartiteDsu(int n) {
@@ -36,3 +41,5 @@ struct BipartiteDsu {
     return a;
   }
 };
+
+#endif

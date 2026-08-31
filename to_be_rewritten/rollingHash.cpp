@@ -102,5 +102,3 @@ int main() {
   cout << hash_eq(rh1, rh2, 1, 4, 0, 3) << '\n'; // False
   cout << hash_eq(rh1, rh2, 7, 8, 5, 6) << '\n'; // True
 }
-
-// UPDATE N WHEN UR DONE AAAAAAAAAAAAAAAAAAAAAAAAAAA (if it applies lol)

@@ -1,16 +1,14 @@
-#include <bits/stdc++.h>
-using namespace std;
+#ifndef AHO_HPP
+#define AHO_HPP
 
-#define FOR(x,n) for(int x=0;x<n;x++)
-using ll = long long;
-using ii = pair<int,int>;
+#include "starter.hpp"
 
 struct Aho {
   struct Vertex {
     vector<int> ch;
     int par, idx, dep, id = -1, suf_link = 0, out_link = 0;
     Vertex() : Vertex(-1, -1, 0) {}
-    Vertex(int par, int idx, int dep) : par(par), idx(idx), dep(dep) {
+    Vertex(int par_, int idx_, int dep_) : par(par_), idx(idx_), dep(dep_) {
       ch = vector<int>(26);
     }
   };
@@ -64,14 +62,4 @@ struct Aho {
   }
 };
 
-string text = "ahishersshesheshe";
-vector<string> pattern = {"his", "he", "she", "hers"};
-
-void f(int i, int j) {
-  cout << pattern[j] << " found at position " << i << '\n';
-}
-
-int main() {
-  Aho a = Aho(pattern);
-  a.match(text, f);
-}
+#endif

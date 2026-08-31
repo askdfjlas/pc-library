@@ -1,6 +1,7 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define FOR(x,n) for(int x=0;x<n;x++)
+#ifndef KMP_HPP
+#define KMP_HPP
+
+#include "starter.hpp"
 
 vector<int> compute_lps(string pat) {
   int n = pat.length(), j = 0;
@@ -19,14 +20,14 @@ vector<int> compute_lps(string pat) {
 }
 
 vector<int> kmp(string search, string pat) {
-  vector<int> found, lps = compute_lps(pat);
+  vector<int> res, lps = compute_lps(pat);
   int i = 0, j = 0;
   while(i < (int)search.length()) {
     if(search[i] == pat[j]) {
       i++;
       j++;
       if(j == (int)pat.length()) {
-        found.push_back(i - j);
+        res.push_back(i - j);
         j = lps[j - 1];
       }
     }
@@ -35,14 +36,7 @@ vector<int> kmp(string search, string pat) {
       else i++;
     }
   }
-  return found;
+  return res;
 }
 
-int main() {
-  string pat = "aaaa";
-  string search = "aaaaaaabaaaa";
-
-  vector<int> pos = kmp(search, pat);
-  for(auto p : pos) cout << p << ' ';
-  cout << '\n';
-}
+#endif

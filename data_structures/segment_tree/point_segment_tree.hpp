@@ -1,14 +1,12 @@
-#include <bits/stdc++.h>
-using namespace std;
+#ifndef POINT_SEGMENT_TREE_HPP
+#define POINT_SEGMENT_TREE_HPP
 
-#define FOR(x,n) for(int x=0;x<n;x++)
-using ll = long long;
-using ii = pair<int,int>;
+#include "starter.hpp"
 
 template <class T> struct PointSegmentTree {
   int size = 1, n;
   vector<T> tree;
-  PointSegmentTree(int n) : PointSegmentTree(vector<T>(n)) {}
+  PointSegmentTree(int n_) : PointSegmentTree(vector<T>(n_)) {}
   PointSegmentTree(const vector<T>& arr) : n((int)arr.size()) {
     while(size < (int)arr.size())
       size <<= 1;
@@ -59,31 +57,4 @@ template <class T> struct PointSegmentTree {
   void _consume(int i) { tree[i] = tree[i << 1] * tree[i << 1 | 1]; }
 };
 
-struct SegType {
-  ll a; 
-  SegType() : SegType(0) {}
-  SegType(ll _a) : a(_a) {}
-  SegType operator*(SegType t) {
-    return SegType(a + t.a);
-  }
-};
-
-// https://judge.yosupo.jp/problem/point_add_range_sum
-int main() {
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-  // mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-
-  int n, q;
-  cin >> n >> q;
-  vector<SegType> arr(n);
-  FOR(i,n) cin >> arr[i].a;
-
-  PointSegmentTree<SegType> tree(arr);
-  while(q--) {
-    int t, a, b;
-    cin >> t >> a >> b;
-    if(t == 0) tree.update(a, b);
-    else cout << tree.query(a, b - 1).a << '\n';
-  }
-}
+#endif

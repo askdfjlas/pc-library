@@ -1,3 +1,8 @@
+#ifndef DSU_HPP
+#define DSU_HPP
+
+#include "starter.hpp"
+
 struct Dsu {
   vector<int> par, sz;
   Dsu(int n) {
@@ -28,3 +33,5 @@ struct Dsu {
     return a;
   }
 };
+
+#endif
