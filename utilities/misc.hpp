@@ -1,9 +1,9 @@
-#ifndef MISC_UTILITIES
-#define MISC_UTILITIES
+#ifndef MISC_HPP
+#define MISC_HPP
 
 #include "starter.hpp"
 
-namespace misc_utilities {
+namespace misc {
   template<ranges::input_range R>
   vector<pair<ranges::range_value_t<R>, int>> compute_runs(R&& range) {
     auto begin = ranges::begin(range);

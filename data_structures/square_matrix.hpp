@@ -3,37 +3,37 @@
 
 #include "starter.hpp"
 
-template <ll MOD = 1e9 + 7> struct SquareMatrix {
-  vector<vector<ll>> mat;
-  SquareMatrix(int n) {
-    mat.resize(n);
-    FOR(i,n) {
-      mat[i].resize(n);
-      mat[i][i] = 1;
-    }
+template <class T> struct SquareMatrix {
+  int n;
+  vector<T> mat;
+  static SquareMatrix one(int n_) {
+    SquareMatrix res(n_);
+    FOR(i,n_) res[i][i] = T{1};
+    return res;
   }
-  static SquareMatrix zero(int n) {
-    SquareMatrix ret(n);
-    FOR(i,n) ret.mat[i][i] = 0;
-    return ret;
+  SquareMatrix(int n_) : n(n_), mat(n_ * n_) {}
+  T* operator[](int i) { return &mat[i * n]; }
+  const T* operator[](int i) const { return &mat[i * n]; }
+  SquareMatrix operator*(SquareMatrix& rhs) {
+    SquareMatrix res(n);
+    FOR(i,n) FOR(j,n) FOR(k,n)
+      res[i][j] += (*this)[i][k] * rhs[k][j];
+    return res;
   }
-  SquareMatrix operator*(SquareMatrix& other) {
-    int n = (int)mat.size();
-    SquareMatrix ret = zero(n);
-    FOR(i,n) FOR(j,n) FOR(k,n) {
-      ll inc = (mat[i][k] * other.mat[k][j]) % MOD;
-      ret.mat[i][j] = (ret.mat[i][j] + inc) % MOD;
-    }
-    return ret;
+  vector<T> operator*(vector<T>& rhs) {
+    vector<T> res(n);
+    FOR(i,n) FOR(j,n)
+      res[i] += (*this)[i][j] * rhs[j];
+    return res;
   }
-  SquareMatrix exp(ll p) {
-    SquareMatrix ret((int)mat.size()), x = *this;
+  SquareMatrix pow(ll p) {
+    SquareMatrix res = one(n), x = *this;
     while(p > 0) {
-      if(p & 1) ret = ret * x;
+      if(p & 1) res = res * x;
       p >>= 1;
       x = x * x;
     }
-    return ret;
+    return res;
   }
 };
 

@@ -1,8 +1,8 @@
-#ifndef MINT_HPP
-#define MINT_HPP
+#ifndef MODINT_HPP
+#define MODINT_HPP
 
 #include "starter.hpp"
-#include "utilities/math_utilities.hpp"
+#include "utilities/math.hpp"
 
 template <unsigned int MOD> struct Mint {
   unsigned int v;
@@ -11,15 +11,15 @@ template <unsigned int MOD> struct Mint {
     if(v_ < 0) [[unlikely]] v = (v_ % MOD) + MOD;
     else if(v_ >= MOD) [[unlikely]] v = v_ % MOD;
     else v = v_;
-  } 
+  }
   Mint& operator+=(const Mint& rhs) {
     v += rhs.v;
     if(v >= MOD) v -= MOD;
     return *this;
   }
   Mint& operator-=(const Mint& rhs) {
+    if(*this < rhs) v += MOD;
     v -= rhs.v;
-    if(v < 0) v += MOD;
     return *this;
   }
   Mint& operator*=(const Mint& rhs) {
@@ -58,7 +58,7 @@ template <unsigned int MOD> struct Mint {
   bool operator<=(const Mint& rhs) { return v <= rhs.v; }
   bool operator>(const Mint& rhs) { return v > rhs.v; }
   bool operator>=(const Mint& rhs) { return v >= rhs.v; }
-  Mint pow(ll p) const { return math_utilities::pow_mod(v, p, MOD); }
+  Mint pow(ll p) const { return math::pow_mod(v, p, MOD); }
   Mint inv() const { return pow(MOD - 2); }
   friend ostream& operator<<(ostream& os, const Mint rhs) { return os << rhs.v; }
   friend istream& operator>>(istream& is, Mint& rhs) { return is >> rhs.v; }

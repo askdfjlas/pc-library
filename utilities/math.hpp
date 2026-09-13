@@ -1,9 +1,9 @@
-#ifndef MATH_UTILITIES_HPP
-#define MATH_UTILITIES_HPP
+#ifndef MATH_HPP
+#define MATH_HPP
 
 #include "starter.hpp"
 
-namespace math_utilities {
+namespace math {
   ll pow_mod(ll x, ll y, ll mod) {
     ll res = 1;
     while(y > 0) {

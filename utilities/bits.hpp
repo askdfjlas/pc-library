@@ -1,7 +1,7 @@
-#ifndef BIT_UTILITIES_HPP
-#define BIT_UTILITIES_HPP
+#ifndef BITS_HPP
+#define BITS_HPP
 
-namespace bit_utilities {
+namespace bits {
   inline int count_trailing_zeroes(int n) {
     return __builtin_ctz(n);
   }
