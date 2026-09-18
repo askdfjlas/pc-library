@@ -28,10 +28,10 @@ template <unsigned int MOD> struct Mint {
     return *this;
   }
   Mint& operator/=(const Mint& rhs) { return operator*=(rhs.inv()); }
-  Mint operator+(const Mint& rhs) { return Mint(*this) += rhs; }
-  Mint operator-(const Mint& rhs) { return Mint(*this) -= rhs; }
-  Mint operator*(const Mint& rhs) { return Mint(*this) *= rhs; }
-  Mint operator/(const Mint& rhs) { return Mint(*this) /= rhs; }
+  friend Mint operator+(const Mint& lhs, const Mint& rhs) { return Mint(lhs) += rhs; }
+  friend Mint operator-(const Mint& lhs, const Mint& rhs) { return Mint(lhs) -= rhs; }
+  friend Mint operator*(const Mint& lhs, const Mint& rhs) { return Mint(lhs) *= rhs; }
+  friend Mint operator/(const Mint& lhs, const Mint& rhs) { return Mint(lhs) /= rhs; }
   Mint& operator++() {
     v++;
     if(v == MOD) v = 0;
