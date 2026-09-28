@@ -4,32 +4,31 @@
 #include "starter.hpp"
 
 struct Dsu {
-  vector<int> par, sz;
+  vector<int> p, s;
   Dsu(int n) {
-    par.resize(n);
-    sz.resize(n);
+    p.resize(n);
+    s.resize(n);
     FOR(i,n) {
-      par[i] = i;
-      sz[i] = 1;
+      p[i] = i;
+      s[i] = 1;
     }
   }
-  int find(int u) {
+  int get(int u) {
     int t = u;
-    while(par[t] != t)
-      t = par[t];
-    while(par[u] != u) {
-      int nxt = par[u];
-      par[u] = t;
-      u = nxt;
+    while(p[t] != t) t = p[t];
+    while(p[u] != u) {
+      int n = p[u];
+      p[u] = t;
+      u = n;
     }
     return t;
   }
   int join(int u, int v) {
-    int a = find(u), b = find(v);
+    int a = get(u), b = get(v);
     if(a == b) return -1;
-    if(sz[a] < sz[b]) swap(a, b);
-    sz[a] += sz[b];
-    par[b] = a;
+    if(s[a] < s[b]) swap(a, b);
+    s[a] += s[b];
+    p[b] = a;
     return a;
   }
 };
