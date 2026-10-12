@@ -29,6 +29,7 @@ struct DynamicMint {
     v = (v_ * rhs.v) % mod;
     return *this;
   }
+  DynamicMint& operator/=(const DynamicMint& rhs) { return operator*=(rhs.inv()); }
   friend DynamicMint operator+(const DynamicMint& lhs, const DynamicMint& rhs) { return DynamicMint(lhs) += rhs; }
   friend DynamicMint operator-(const DynamicMint& lhs, const DynamicMint& rhs) { return DynamicMint(lhs) -= rhs; }
   friend DynamicMint operator*(const DynamicMint& lhs, const DynamicMint& rhs) { return DynamicMint(lhs) *= rhs; }
