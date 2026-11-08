@@ -4,7 +4,7 @@
 #include "starter.hpp"
 #include "utilities/math.hpp"
 
-template<class T> struct Comb {
+template <class T> struct Comb {
   int max_n;
   vector<T> fact_, fact_inv_;
   Comb(int max_n_): max_n(max_n_) {}
@@ -20,7 +20,7 @@ template<class T> struct Comb {
     _load_facts_if_needed();
     fact_inv_.resize(max_n + 1);
     FORR(i,0,max_n)
-      fact_inv_[i] = T{1}/fact_[i];
+      fact_inv_[i] = T(1)/fact_[i];
   }
   T fact(int n) {
     _load_facts_if_needed();
