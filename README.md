@@ -2,7 +2,7 @@ https://kenkoooo.com/atcoder/#/table/askdfjlas
 
 ABCs solved without hints: 1
 
-ARCs solved without hints: 1
+ARCs solved without hints: 2
 
 AGCs solved without hints: 0
 
