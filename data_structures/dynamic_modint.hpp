@@ -60,8 +60,8 @@ struct DynamicMint {
   bool operator<=(const DynamicMint& rhs) { return v <= rhs.v; }
   bool operator>(const DynamicMint& rhs) { return v > rhs.v; }
   bool operator>=(const DynamicMint& rhs) { return v >= rhs.v; }
-  DynamicMint pow(ll p) const { return math::pow_mod(v, p, mod); }
-  DynamicMint inv() const { return pow(mod - 2); }
+  DynamicMint pow(ll p) const { return math::mod_pow(v, p, mod); }
+  DynamicMint inv() const { return math::mod_inv(v, mod); }
   friend ostream& operator<<(ostream& os, const DynamicMint rhs) { return os << rhs.v; }
   friend istream& operator>>(istream& is, DynamicMint& rhs) { return is >> rhs.v; }
 };

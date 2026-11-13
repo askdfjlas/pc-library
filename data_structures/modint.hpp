@@ -58,8 +58,8 @@ template <unsigned int MOD> struct Mint {
   bool operator<=(const Mint& rhs) { return v <= rhs.v; }
   bool operator>(const Mint& rhs) { return v > rhs.v; }
   bool operator>=(const Mint& rhs) { return v >= rhs.v; }
-  Mint pow(ll p) const { return math::pow_mod(v, p, MOD); }
-  Mint inv() const { return pow(MOD - 2); }
+  Mint pow(ll p) const { return math::mod_pow(v, p, MOD); }
+  Mint inv() const { return math::mod_inv(v, MOD); }
   friend ostream& operator<<(ostream& os, const Mint rhs) { return os << rhs.v; }
   friend istream& operator>>(istream& is, Mint& rhs) { return is >> rhs.v; }
 };
