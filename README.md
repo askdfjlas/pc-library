@@ -1,6 +1,6 @@
 https://kenkoooo.com/atcoder/#/table/askdfjlas
 
-ABCs solved without hints: 1
+ABCs solved without hints: 2
 
 ARCs solved without hints: 3
 
