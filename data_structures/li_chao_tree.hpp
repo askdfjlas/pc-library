@@ -1,5 +1,5 @@
-#ifndef LICHAOTREE_HPP
-#define LICHAOTREE_HPP
+#ifndef LI_CHAO_TREE_HPP
+#define LI_CHAO_TREE_HPP
 
 #include "starter.hpp"
 
