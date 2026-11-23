@@ -63,13 +63,11 @@ struct WaveletMatrix {
       int cnt_l = pref[r + 1] - pref[l];
       int km = (kl + kr)/2;
       if(k <= cnt_l) {
-        l = pref[l];
-        r = pref[r + 1] - 1;
+        l = pref[l], r = pref[r + 1] - 1;
         kr = km;
       }
       else {
-        l = pref.back() + l - pref[l];
-        r = pref.back() + r - pref[r + 1];
+        l = pref.back() + l - pref[l], r = pref.back() + r - pref[r + 1];
         k -= cnt_l;
         kl = km + 1;
       }
@@ -106,19 +104,16 @@ struct WaveletMatrix {
       auto& pref = prefs[i];
       int cnt_l = pref[r + 1] - pref[l];
       int cnt_r = (r - l + 1) - cnt_l;
-      int l_r = pref.back() + l - pref[l];
-      int r_r = pref.back() + r - pref[r + 1];
+      int l_r = pref.back() + l - pref[l], r_r = pref.back() + r - pref[r + 1];
       int km = (kl + kr)/2;
       T sum_r = range_summers[i].range_sum(l_r, r_r);
       T acc_r = op(acc, sum_r);
       if(f(cnt + cnt_r, acc_r) && kl < kr) {
-        l = l_r;
-        r = r_r;
+        l = l_r, r = r_r;
         kl = km + 1;
       }
       else {
-        l = pref[l];
-        r = pref[r + 1] - 1;
+        l = pref[l], r = pref[r + 1] - 1;
         kr = km;
         acc = acc_r;
         cnt += cnt_r;
